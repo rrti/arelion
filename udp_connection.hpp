@@ -54,9 +54,9 @@ namespace arelion {
 		void process_raw_packet(udp_packet& packet);
 
 		// connections are silent by default, unmuting allows them to send data
-		void unmute() { m_muted = false; }
-		void close(bool flush);
-		void set_loss_factor(int32_t factor) {
+		void unmute() override { m_muted = false; }
+		void close(bool flush) override;
+		void set_loss_factor(int32_t factor) override {
 			m_netloss_factor = util::clamp(factor, int32_t(config::MIN_LOSS_FACTOR), int32_t(config::MAX_LOSS_FACTOR));
 		}
 
